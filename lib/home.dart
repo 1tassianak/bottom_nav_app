@@ -1,3 +1,4 @@
+import 'package:bottom_nav_bar/business.dart';
 import 'package:bottom_nav_bar/school.dart';
 import 'package:flutter/material.dart';
 
@@ -19,10 +20,7 @@ class _HomeState extends State<Home> {
       'Index 0: Home',
       style: optionStyle,
     ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
+    Business(name: 'Business'),
     School(name: 'School'),
   ];
 
@@ -33,6 +31,9 @@ class _HomeState extends State<Home> {
   }
 
   String _getAppBarTitle(int index) {
+    if (index == 1 && _widgetOptions[index] is Business) {
+      return (_widgetOptions[index] as Business).name;
+    }
     if (index == 2 && _widgetOptions[index] is School) {
       return (_widgetOptions[index] as School).name;
     }
